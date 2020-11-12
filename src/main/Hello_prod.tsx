@@ -9,6 +9,10 @@ import "../style.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { ReactTableDefaults } from "react-table";
 import {DisplayEngageCl} from "./Display/DisplayEngage"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCircle,faInfoCircle, faUser, faUserCircle} from '@fortawesome/free-solid-svg-icons'
+library.add(faCircle,faInfoCircle,faUser, faUserCircle);
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 5,
@@ -361,6 +365,13 @@ class HelloCl extends React.Component<HelloProps, MyState> {
             {this.state.status === "LoginSuccess" &&
                  (
                   <div>
+                    <h2>Welcome {this.props.currentUser.username}!
+                    <FontAwesomeIcon 
+                      icon="user-circle" 
+                      style={{ 
+                        color: 'grey',
+                        fontSize:36}}/>
+                        </h2>
                   <DisplayEngageCl />
                   </div>
                 )}

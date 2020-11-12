@@ -216,7 +216,7 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             ) : this.state.currentView == 'home'?(
               //Home
               <div className="engagement-welcome">
-                <h2>Welcome {this.props.currentUser.username}to "I want to Engage"</h2>
+                <h2>Welcome to "I want to Engage"</h2>
                 <h3>My Engagements : to view Engagements </h3>
                 <h3>Add New Engagement : to initiate new engagements </h3>
                 <h3>View My Companies : to view engagements statistics per company </h3>
@@ -274,7 +274,7 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             ) : this.state.currentView == 'home'?(
               //Home
               <div className="engagement-welcome">
-                <h2>Welcome {this.props.currentUser.username}! This is "I want to Engage"</h2>
+                <h2>Welcome to "I want to Engage"</h2>
                 <h3>My Engagements : to view Engagements </h3>
                 <h3>Add New Engagement : to initiate new engagements </h3>
                 <h3>View My Companies : to view engagements statistics per company </h3>
