@@ -9,6 +9,8 @@ import {DisplayMyCompaniesCl} from './DisplayMyCompanies'
 interface MyProps {
   engagement?;
   demoReducer?;
+  currentUser?;
+  assetMngers?;
 }
 interface MyState {
   selectedEngagement;
@@ -158,10 +160,16 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
     const tableData = this.props.engagement
       ? this.createData_temp(this.props.engagement)
       : this.createData(demoData);
+    let isAssetMngers=this.props.assetMngers && this.props.assetMngers.map(e=>e[0]).includes(this.props.currentUser.userid)
+    // console.log('isAssetMngers', isAssetMngers)
     return (
       <div>
-        {tableData && (
-          <div>
+      
+        {tableData && 
+        (
+          !isAssetMngers ?
+          (<div>
+            
             <button
               className="view-engagement-button"
               id="home"
@@ -176,6 +184,7 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             >
               My Engagements
             </button>
+         
             <button
               className="view-engagement-button"
               id="new"
@@ -183,6 +192,7 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             >
               Add New Engagement
             </button>
+            
             <button
               className="view-engagement-button"
               id="my_companies"
@@ -190,7 +200,7 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             >
               View My Companies
             </button>
-
+            
             {this.state.currentView == "View" ? (
               <div>
                 <ReactTable
@@ -206,7 +216,65 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             ) : this.state.currentView == 'home'?(
               //Home
               <div className="engagement-welcome">
-                <h2>Welcome to "I want to Engage"</h2>
+                <h2>Welcome {this.props.currentUser.username}to "I want to Engage"</h2>
+                <h3>My Engagements : to view Engagements </h3>
+                <h3>Add New Engagement : to initiate new engagements </h3>
+                <h3>View My Companies : to view engagements statistics per company </h3>
+                
+              </div>
+            ):<div>
+              <DisplayMyCompaniesCl/>
+            </div>}
+            {this.state.currentView == "View" &&
+              this.state.selectedEngagement != "0" && (
+                <DisplayViewEngagementDetailCl
+                  engagementId={this.state.selectedEngagement}
+                  data={tableData}
+                />
+              )}
+          </div>):
+          (
+
+            <div>
+              <button
+              className="view-engagement-button-AM"
+              id="home"
+              onClick={this.setCurrentview}
+            >
+              Home
+            </button>
+            <button
+              className="view-engagement-button-AM"
+              id="View"
+              onClick={this.setCurrentview}
+            >
+              My Engagements
+            </button>
+            
+            <button
+              className="view-engagement-button-AM"
+              id="my_companies"
+              onClick={this.setCurrentview}
+            >
+              View My Companies
+            </button>
+            
+            {this.state.currentView == "View" ? (
+              <div>
+                <ReactTable
+                  columns={columns}
+                  data={tableData}
+                  filterable
+                  defaultFilterMethod={filterCaseInsensitive}
+                  defaultSorted={[{ id: "start", desc: true }]}
+                />
+              </div>
+            ) : this.state.currentView == "new" ? (
+              <DisplayNewEngagementFormCl />
+            ) : this.state.currentView == 'home'?(
+              //Home
+              <div className="engagement-welcome">
+                <h2>Welcome {this.props.currentUser.username}! This is "I want to Engage"</h2>
                 <h3>My Engagements : to view Engagements </h3>
                 <h3>Add New Engagement : to initiate new engagements </h3>
                 <h3>View My Companies : to view engagements statistics per company </h3>
@@ -223,6 +291,7 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
                 />
               )}
           </div>
+          )
         )}
       </div>
     );
@@ -231,7 +300,9 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
 
 const mapStateToProps = (state, ownProps) => ({
   engagement: state.demoReducer.engagement,
-  demoReducer: state.demoReducer
+  demoReducer: state.demoReducer,
+  currentUser: state.authReducer,
+  assetMngers:state.demoReducer.assetMngers
 });
 
 const mapDispatchToProps = {};

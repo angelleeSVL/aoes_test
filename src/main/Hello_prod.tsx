@@ -350,7 +350,7 @@ class HelloCl extends React.Component<HelloProps, MyState> {
                   {this.state.status !== "LoginSuccess" && 
                   <div className="red">{this.state.status}</div>
                   }
-                  <h5>Last updated: 2020.11.12 15:04</h5>
+                  <h5>aoes_test Last updated: 2020.11.12 16:30</h5>
                 </form>
               )}
               
