@@ -1,0 +1,563 @@
+#Infographic {
+    width: 80%;
+    margin: .5em auto;
+    padding: 1em;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: #fff;
+    height: 10em;
+    margin-top: 2em
+  }
+/* #Infographic span {
+    display: none;
+} */
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.engagement-detail{
+  border: 3px solid black;
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 30px;
+  font-size: 16px;
+}
+.engagement-detail > div{
+  width:80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+.engagement-welcome {
+  border: 3px solid black;
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+}
+.status-card-components > div {
+  border: 3px solid black;
+  width:80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+.card-status-update-button {
+  border: 3px solid black;
+  width: 25%;
+  margin: 10px;
+  padding: 10px;
+  font-size: large;
+}
+.flex-container > div {
+  margin: 10px;
+  width: 45%;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.flex-container-select-sector{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.flex-container-select-sector > div{
+  margin: 10px;
+  width: 45%;
+  text-align: center;
+}
+.flex-container-funds{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+.circle {
+    border: .2em solid rgb(0, 0, 0);
+    /* border-radius: 50%; */
+    width: 20em;
+    height: 10em;
+    text-align: center;
+    vertical-align: center;
+    position: absolute;
+
+}
+
+.circle p {
+    height: 10em;
+    width: 20em;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div#c1 {
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+    z-index: 1;
+}
+
+div#c2 {
+    top: 0;
+    left: 13em;
+    background-color: rgba(225, 241, 233, 0.795);
+    z-index: 1;
+    
+}
+div#c1 p {
+    padding-right: 7em;
+} 
+div#c2 p {
+  
+    padding-left: 7em;
+} 
+
+div#c1 :hover{
+    height:9.6em;
+    background-color: darkblue;
+    color:white;
+
+}
+div#c2 :hover{
+  height:9.6em;
+    background-color: lightgreen;
+    
+}
+div.joined {
+    position: absolute;
+    display: table-cell;
+    text-align: center;
+    height: 10em;
+    width: 8em; 
+    z-index: 20;
+}
+.joined p{
+    height: 10em;
+    width: 6.7em; 
+    display: table-cell;
+    vertical-align: middle;
+    
+}
+#j12 {
+    border: 0.05em solid #000;
+    height: 9.9em;
+    width: 7em; 
+     margin-left: 12.2em; 
+     margin-top: -0.9em;
+     z-index: 20;
+     /*background-color: lightgray; */
+    /* overflow:hidden; */
+    
+}
+div#j12 :hover{
+  height:9.6em;
+    background-color: yellowgreen;
+    
+}
+
+.Footer{
+  clear: both;
+  position: relative;
+  height: 200px;
+  
+  margin-top:auto; 
+}
+.test{
+  background: #008CBA
+}
+
+/* buttons */
+
+button{
+  border-radius: 10px;
+  font-size: 16px;
+  transition-duration: 0.2s;
+  
+  width: 80px;
+  cursor: pointer;
+}
+.view-engagement-button {
+  font-size: 16px;
+  width:24%;
+  padding: 10px;
+  margin: 4px 4px;
+}
+button.form{
+  padding: 10px;
+}
+button.LEI{
+  width: 190px;
+}
+.confirm-button-class{
+  width: 180px;
+}
+.cancel-button-class{
+  width: 100px;
+}
+button.selectPortfolioBtn{
+  width:40px;
+  border-radius: 12px;
+  font-size: 18px;
+  transition-duration: 0.2s;
+  padding: 5px;
+  text-align: center;
+  margin: 4px 4px;
+  cursor: pointer;
+  width: 100px;
+  color: darkblue;
+}
+button.selectPortfolioBtn:hover{
+  padding: 2px;
+  background-color: rgb(46, 22, 184);
+  color: grey;
+  border: 3px solid black;
+}
+button.activePortfolio{
+  border-radius: 12px;
+  font-size: 18px;
+  transition-duration: 0.2s;
+  padding: 2px;
+  text-align: center;
+  margin: 4px 4px;
+  cursor: pointer;
+  width: 100px;
+  border: 6px solid black;
+}
+
+button.sendBtn{
+  background-color: rgb(201, 248, 232)
+}
+button.sendBtn:hover{
+  font-size: 16px;
+  color: white;
+}
+button.icon{
+  transition-duration: 0.2s;
+  width:50px;
+}
+button.icon:hover{
+  background-color: rgb(217, 243, 234)
+  
+}
+button.disabledSendBtn{
+  pointer-events: none;
+  background-color:white;
+  color:white;
+  border:none;
+}
+
+button:hover{
+  background-color: rgb(31, 37, 228);
+  color: white;
+}
+button.active{
+  background-color: #008CBA;
+  color: white;
+}
+
+.red{
+  color:white;
+}
+.orange{
+  color:orange;
+}
+ul{
+  /*
+  margin: 15px;
+  */
+  font-size: 20px;
+}
+
+.container {
+  position:relative;
+}
+
+/* tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  height: 5em;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 10em;
+  height: 5em;
+  background-color: rgb(85, 83, 83);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 30;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  height: 5em;
+}
+
+.hidden{
+  display:none;
+}
+
+/* Table */
+.table{
+    border: 0.1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    background-color: rgb(232, 244, 248);
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.table th{
+  text-align: center;
+}
+.table tbody{
+  text-align: center;
+}
+
+/* Forms */
+.signin-form, .want-to-buy-form{
+  font-family: 'Open Sans Condensed', arial, sans;
+	width: 70%;
+	padding: 50px;
+	background: #FFFFFF;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+.signin-form input[type="text"],
+.signin-form input[type="password"],
+.createRequest-form input[type="text"],
+.createRequest-form input[type="number"],
+.createRequest-form input[type="date"],
+.want-to-buy-form >p input[type="text"]
+{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 5px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 30px;
+}
+.createRequest-form{
+  font-family: 'Open Sans Condensed', arial, sans;
+	width: 70%;
+	padding: 30px;
+	background: #FFFFFF;
+  margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+/* Collapsible */
+.Collapsible{
+  background: rgb(241, 245, 247) ;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 1px solid 'lightGrey';
+  border-top: 0;
+}
+.Collapsible__contentInner p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.Collapsible__contentInner p:last-child {
+  margin-bottom: 0;
+}
+.Collapsible__trigger {
+  display: block;
+  font-weight: 800;
+  text-decoration: none;
+  color: 'grey';
+  position: relative;
+  border: 1px solid white;
+  padding: 10px;
+  background: skyblue;
+  color: black;
+}
+.Collapsible__trigger:after {
+  font-family: 'FontAwesome';
+  content: '\f107';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 150ms;
+}
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(180deg);
+}
+.Collapsible__trigger.is-disabled {
+  opacity: 0.5;
+  background-color: grey;
+}
+.CustomTriggerCSS {
+  background-color: lightcoral;
+  transition: background-color 200ms ease;
+}
+.CustomTriggerCSS--open {
+  background-color: darkslateblue;
+}
+.Collapsible__custom-sibling {
+  padding: 5px;
+  font-size: 12px;
+  background-color: #cbb700;
+  color: black;
+}
+/* select */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: rgb(200, 221, 243);
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* mnger-checkbox */
+
+.container-checkbox-checkall, .mnger-checkbox{
+  display: block;
+  position: relative;
+  margin-bottom: 6px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Hide the browser's default checkbox */
+.container-checkbox-checkall input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  padding-left: 10px;
+  
+}
+
+
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox-checkall:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox-checkall input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox-checkall .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+
+}
+
+ul {
+  padding: 5px;
+}
+
+
+ul li {
+  background: #cce5ff;
+  margin: 5px;
+}
+.mnger-checkbox-list{
+  background: white;
+}
+.mnger-checkbox-list > label{
+  color:black
+}
