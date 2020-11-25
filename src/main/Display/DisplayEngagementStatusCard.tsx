@@ -29,6 +29,7 @@ interface MyProps {
   currentUser;
   engagementStatus;
   engagementStatusAction;
+  assetMngers;
 }
 
 const demoStatus = [
@@ -178,15 +179,15 @@ export class DisplayEngagementStatusCard extends React.Component<
   render() {
     // let statusCards = this.props.selectedEngagement && this.props.engagementStatus&&
     //   this.createCardComponent(this.props.engagementStatus, this.props.selectedEngagement);
-    
-      // console.log("statusCards", statusCards);
-    // console.log('this.props.selectedEngagement', this.props.selectedEngagement)
+      // console.log("statusCards", statusCards); 
     // console.log('this.state.status', this.state.status)
     // console.log('this.props.engagementStatus', this.props.engagementStatus)
+    let isEngageOwner=this.props.selectedEngagement.owner_id==this.props.currentUser.userid
     return (
       <div >
         {this.state.status != undefined && (
           <div className='status-card-components'>
+            {isEngageOwner&&
             <div>
             
             
@@ -239,6 +240,7 @@ export class DisplayEngagementStatusCard extends React.Component<
             </Collapsible>
             
             </div>
+            }
             <Row>
               <Col m={12}>
                 {this.state.status.map(e => {
@@ -275,6 +277,7 @@ export class DisplayEngagementStatusCard extends React.Component<
 const mapStateToProps = state => ({
     currentUser: state.authReducer,
     engagementStatus: state.demoReducer.engagementStatus,
+    assetMngers:state.demoReducer.assetMngers
 });
 
 
