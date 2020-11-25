@@ -8,6 +8,7 @@ import { object, array } from "prop-types";
 import "../style.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { ReactTableDefaults } from "react-table";
+import "react-table/react-table.css";
 import {DisplayEngageCl} from "./Display/DisplayEngage"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -16,6 +17,8 @@ library.add(faCircle,faInfoCircle,faUser, faUserCircle);
 
 Object.assign(ReactTableDefaults, {
   defaultPageSize: 5,
+  showPageSizeOptions:true,
+  pageSizeOptions: [5, 10, 20, 25, 50, 100],
   minRows : 0
 });
 
@@ -354,7 +357,7 @@ class HelloCl extends React.Component<HelloProps, MyState> {
                   {this.state.status !== "LoginSuccess" && 
                   <div className="red">{this.state.status}</div>
                   }
-                  <h5>aoes_test Last updated: 2020.11.12 16:30</h5>
+                  <h5>aoes_test Last updated: 2020.11.25 11:45</h5>
                 </form>
               )}
               

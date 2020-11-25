@@ -11,6 +11,8 @@ import Collapsible from 'react-collapsible';
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
 import {engagementStatusAction} from '../actions/engagementAction'
+import "react-table/react-table.css";
+import "../../style.css"
 
 interface MyState {
   status;

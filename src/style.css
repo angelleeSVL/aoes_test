@@ -190,7 +190,7 @@ button{
 }
 .view-engagement-button-AM {
   font-size: 16px;
-  width:32.5%;
+  width:32%;
   padding: 10px;
   margin: 4px 4px;
 }
@@ -568,7 +568,7 @@ ul li {
   color:black
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   
   body {
     margin: 0 18px;
@@ -591,4 +591,4 @@ ul li {
   .signin-form {
     background-color: lightblue;
   }
-}
+} */

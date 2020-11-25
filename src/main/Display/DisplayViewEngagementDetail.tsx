@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import ReactTable from "react-table";
+import "react-table/react-table.css";
 import { filterCaseInsensitive } from "../filterCaseInsensitive";
 import { server } from "../../common/api/query";
 import {engagementAction} from '../actions/engagementAction'

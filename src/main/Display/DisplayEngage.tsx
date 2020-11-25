@@ -267,6 +267,8 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
                   filterable
                   defaultFilterMethod={filterCaseInsensitive}
                   defaultSorted={[{ id: "start", desc: true }]}
+                  showPageSizeOptions={true}
+                  pageSizeOptions={[5, 10, 20, 25, 50, 100]}
                 />
               </div>
             ) : this.state.currentView == "new" ? (
