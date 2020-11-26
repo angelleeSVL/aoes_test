@@ -107,7 +107,7 @@ export class DisplayNewEngagementForm extends React.Component<
   createCompanyOptions() {
     const data = this.props.data;
     let options = [];
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < data.length; i++) {
       options.push({
         value: data[i][1],
         label: data[i][3],

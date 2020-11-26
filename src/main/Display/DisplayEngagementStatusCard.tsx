@@ -262,8 +262,11 @@ export class DisplayEngagementStatusCard extends React.Component<
                     </Card>
                   );
                 })}
-                {this.state.status.length==0 &&
-                <h3>No status! Please add new status!</h3>
+                {this.state.status.length==0 && isEngageOwner &&
+                <h3>No status yet! Please add new status!</h3>
+                }
+                {this.state.status.length==0 && !isEngageOwner &&
+                <h3>No status yet! </h3>
                 }
               </Col>
             </Row>

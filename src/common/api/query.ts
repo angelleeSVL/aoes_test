@@ -4,8 +4,8 @@ import getStore from "../../store";
 
 // const DOMAIN = "http://localhost:5000";
 
-export const server = "http://localhost:5000/api/"; //for dev
-// export const server = "/api/"; //for build
+// export const server = "http://localhost:5000/api/"; //for dev
+export const server = "/api/"; //for build
 
 interface ApiResponse<T> {
   result: T;
