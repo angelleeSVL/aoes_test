@@ -280,6 +280,11 @@ export const demoReducer = (
         ...state,
         engagementMngerPermission: action.data,
       };
+    case "FEMALE_APPOINTED":
+      return {
+        ...state,
+        femaleAppointed: action.data,
+      };
 
     default:
       return state;

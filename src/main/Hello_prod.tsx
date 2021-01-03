@@ -230,6 +230,7 @@ class HelloCl extends React.Component<HelloProps, MyState> {
           // fetchGetPostData("listRankInform", "LIST_SUM_STOCK_PER_OWNER",token,userid);
           // fetchGetPostData("listAuthRankSector", "LIST_RANK_SECTOR",token,userid);
           // fetchGetPostData("listAuthRankCountry", "LIST_RANK_COUNTRY",token,userid);
+          fetchGetPostData("femaleEOAppointed","FEMALE_APPOINTED",token,userid)
           fetchGetPostData("viewRequest", "VIEW_REQUESTLIST",token,userid);
           
           fetchGetPostData("engagement", "ENGAGEMENT",token,userid);
@@ -252,6 +253,7 @@ class HelloCl extends React.Component<HelloProps, MyState> {
           fetchGetPostData("kpxlistPortfolios","KPX_LIST_PORTFOLIO",token,userid)
           fetchGetPostData("kpxLeiLegalName", "KPX_LEI_LEGALNAME",token,userid);
           fetchGetPostData("kpxData","KPX_DATA",token,userid)
+
           /*
           fetchGetPostData("kpxOverlap","KPX_OVERLAP",token,userid)
           fetchGetPostData("kpx2Portfolios","KPX_2Portfolio",token,userid)
