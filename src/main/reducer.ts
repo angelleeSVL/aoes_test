@@ -285,6 +285,11 @@ export const demoReducer = (
         ...state,
         femaleAppointed: action.data,
       };
+    case "FEMALE_DROPPEDOUT":
+      return {
+        ...state,
+        femaleDroppedout: action.data,
+      };
 
     default:
       return state;

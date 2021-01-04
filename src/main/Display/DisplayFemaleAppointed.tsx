@@ -5,7 +5,8 @@ import "react-table/react-table.css";
 import { filterCaseInsensitive } from "../filterCaseInsensitive";
 
 interface MyProps {
-    femaleAppointed?
+    femaleAppointed?;
+    femaleDroppedout
   }
 interface MyState {
 
@@ -53,18 +54,28 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
       }
     render() {
         let femaleAppointed=this.props.femaleAppointed && this.createData(this.props.femaleAppointed)
-
-        
+        let femaleDroppedout=this.props.femaleDroppedout && this.createData(this.props.femaleDroppedout)
         return (
-            
             <div>
-                Female Table
+                <br/>
+                <h2>Appointed Females</h2>
                  <ReactTable
                   columns={columns}
                   data={femaleAppointed}
                   filterable
                   defaultFilterMethod={filterCaseInsensitive}
                   defaultSorted={[{ id: "Date", desc: true }]}
+                  pageSize={10}
+                />
+                <br/>
+                <h2>Dropped out Females</h2>
+                 <ReactTable
+                  columns={columns}
+                  data={femaleDroppedout}
+                  filterable
+                  defaultFilterMethod={filterCaseInsensitive}
+                  defaultSorted={[{ id: "Date", desc: true }]}
+                  pageSize={10}
                 />
                 
             </div>
@@ -74,7 +85,9 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
 
 
 const mapStateToProps = (state, ownProps) => ({
-    femaleAppointed: state.demoReducer.femaleAppointed
+    femaleAppointed: state.demoReducer.femaleAppointed,
+    femaleDroppedout: state.demoReducer.femaleDroppedout,
+
   });
 
 const mapDispatchToProps = {
