@@ -16,6 +16,8 @@ interface MyProps {
   engagementAction?;
   engagementMngerPermission?;
   assetMngers?;
+  femaleAppointed?;
+  femaleDroppedout?;
 }
 interface MyState {
   submitted;
@@ -120,6 +122,21 @@ export class DisplayViewEngagementDetail extends React.Component<
     if(userid.length==0)output=" None"
     return output
   }
+  createData(data) {
+    let output = [];
+    for (let i = 0; i < data.length; i++) {
+      output.push({
+        Date: data[i][0],
+        Company: data[i][2],
+        ISIN: data[i][3],
+        EO_Name: data[i][4],
+        EO_Title: data[i][5],
+        Portfolio_Name: data[i][6],
+        LEI:data[i][7],
+      });
+    }
+    return output;
+  }
   render() {
     const selectedEngagement =
       this.props.data &&
@@ -127,11 +144,14 @@ export class DisplayViewEngagementDetail extends React.Component<
     const filteredDetailsProps = this.props.engagement_detail.filter(
       e => e[0] == this.props.engagementId
     );
+    // console.log('selectedEngagement', selectedEngagement)
     const filteredDetails =
       filteredDetailsProps && this.createFilteredDetails(filteredDetailsProps);
     let permittedAMid=this.props.engagementMngerPermission.filter(e=>e[0]==this.props.engagementId).map(e=>e[1])
     let permittedAMname=this.getAMname(permittedAMid)
     // console.log('permittedAMname', permittedAMname)
+    let femaleAppointed=this.props.femaleAppointed && this.createData(this.props.femaleAppointed)
+    let femaleDroppedout=this.props.femaleDroppedout && this.createData(this.props.femaleDroppedout)
 
     return (
       <div>
@@ -168,7 +188,8 @@ export class DisplayViewEngagementDetail extends React.Component<
             Title={selectedEngagement.Title}
             <br />
             Asset Managers Permitted={permittedAMname}
-            {/* Detail Data Table */}
+            {console.log('femaleAppointed.map(e=>e.LEI)', femaleAppointed.map(e=>e.LEI))}
+            {/* {console.log('femaleAppointed.filter(e=>e.LEI==selectedEngagement.LEI)', femaleAppointed.filter(e=>e.LEI==selectedEngagement.LEI))} */}
             <div>
               <ReactTable
                 columns={columns}
@@ -209,7 +230,10 @@ const mapStateToProps = state => ({
   engagement_detail: state.demoReducer.engagement_detail,
   engagementMngerPermission: state.demoReducer.engagementMngerPermission,
   currentUser: state.authReducer,
-  assetMngers:state.demoReducer.assetMngers
+  assetMngers:state.demoReducer.assetMngers,
+  femaleAppointed: state.demoReducer.femaleAppointed,
+  femaleDroppedout: state.demoReducer.femaleDroppedout,
+
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
