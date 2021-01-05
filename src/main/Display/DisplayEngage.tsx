@@ -12,6 +12,8 @@ interface MyProps {
   demoReducer?;
   currentUser?;
   assetMngers?;
+  femaleAppointed?;
+  femaleDroppedout?;
 }
 interface MyState {
   selectedEngagement;
@@ -31,9 +33,17 @@ const columns = [
     accessor: "LEI"
   },
   {
-    Header: "Ultimate Parent LEI", // Custom header components!
-    accessor: "ultiParentLEI"
+    Header: "Female Appointed", 
+    accessor: "femaleAppointed",
   },
+  {
+    Header: "Female Dropped", 
+    accessor: "femaleDropped",
+  },
+  // {
+  //   Header: "Ultimate Parent LEI", // Custom header components!
+  //   accessor: "ultiParentLEI"
+  // },
   {
     Header: "Types of Engagement",
     accessor: "type" // Custom value accessors!
@@ -128,6 +138,12 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
     }
     return output;
   }
+  checkFemaleAppointed(LEI){
+    return(LEI.length>0 && this.props.femaleAppointed.map(e=>e[7]).includes(LEI))
+  }
+  checkFemaleDropped(LEI){
+    return(LEI.length>0 && this.props.femaleDroppedout.map(e=>e[7]).includes(LEI))
+  }
   createData_temp(data) {
     let output = [];
     for (let i = 0; i < data.length; i++) {
@@ -145,7 +161,9 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
         ),
         LEI:data[i][8],
         ultiParentLEI:data[i][9],
-        updatePermission: <button>update</button>
+        updatePermission: <button>update</button>,
+        femaleAppointed:this.checkFemaleAppointed(data[i][8])?'True':'False',
+        femaleDropped:this.checkFemaleDropped(data[i][8])?'True':'False'
       });
     }
     return output;
@@ -313,7 +331,9 @@ const mapStateToProps = (state, ownProps) => ({
   engagement: state.demoReducer.engagement,
   demoReducer: state.demoReducer,
   currentUser: state.authReducer,
-  assetMngers:state.demoReducer.assetMngers
+  assetMngers:state.demoReducer.assetMngers,
+  femaleAppointed: state.demoReducer.femaleAppointed,
+  femaleDroppedout: state.demoReducer.femaleDroppedout,
 });
 
 const mapDispatchToProps = {};
