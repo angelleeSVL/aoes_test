@@ -198,6 +198,13 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
             </button>
             <button
               className="view-engagement-button"
+              id="ExecuShe"
+              onClick={this.setCurrentview}
+            >
+              ExecuShe
+            </button>
+            <button
+              className="view-engagement-button"
               id="View"
               onClick={this.setCurrentview}
             >
@@ -232,7 +239,10 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
               </div>
             ) : this.state.currentView == "new" ? (
               <DisplayNewEngagementFormCl />
-            ) : this.state.currentView == 'home'?(
+            ): this.state.currentView== 'ExecuShe'?(
+             <DisplayFemaleAppointed /> 
+            ) 
+            : this.state.currentView == 'home'?(
               //Home
               <div>
                 <div className="engagement-welcome">
@@ -242,8 +252,6 @@ class DisplayEngage extends React.Component<MyProps, MyState> {
                   <h3>View My Companies : to view engagements statistics per company </h3>
                   
                 </div>
-              <DisplayFemaleAppointed />
-
               </div>
             ):<div>
               <DisplayMyCompaniesCl/>

@@ -24,15 +24,6 @@ export const female_list_columns=(data)=>{
             accessor: "Company",
         },
         {
-            Header: "ISIN",
-            accessor: "ISIN"
-        },
-        {
-            Header: "LEI",
-            accessor: "LEI"
-        },
-    
-        {
             Header: "EO Name",
             accessor: "EO_Name"
         },
@@ -44,6 +35,15 @@ export const female_list_columns=(data)=>{
             Header: "Index",
             accessor: "Index"
         },
+        {
+            Header: "ISIN",
+            accessor: "ISIN"
+        },
+        {
+            Header: "LEI",
+            accessor: "LEI"
+        },
+    
     ]    
     return columns
 } 
