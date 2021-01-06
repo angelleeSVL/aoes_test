@@ -100,7 +100,21 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
     let countDropped = this.countDataByDate(datesInData,selectedFemaleDroppedDataByIndex)
     let countNetChange = this.countNetChange(countAppointed, countDropped) 
     let countAccumulated = this.countAccumulated(countNetChange)
-    
+    let waterfallChartData=[ 
+        {
+            x: datesInData,
+            y: countNetChange,
+            name: 'Net Change',
+            type: 'waterfall',
+            autosize: true,
+            showlegend: true,
+            connector: {
+                line: {
+                  color: "rgb(63, 63, 63)"
+                }
+              },
+        }
+    ]
     return (
       <div>
         
@@ -137,6 +151,15 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
                 color: 'orange'
               }
             },
+            {
+              type: "bar",
+              name:'Net Change',
+              x: datesInData,
+              y: countNetChange,
+              marker: {
+                color: 'blue'
+              }
+            },
           ]}
           layout={{ 
               width: 1000, 
@@ -144,28 +167,14 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
               title: "Female EO Plot" 
             }}
         />
-        {/* <Plot
-          data={[
-            
-            {
-                x: ['giraffes', 'orangutans', 'monkeys'],
-                y: [12, 18, 29],
-                name: 'LA Zoo',
-                type: 'bar'
-            },
-            {
-                x: ['giraffes', 'orangutans', 'monkeys'],
-                y: [20, 14, 23],
-                name: 'SF Zoo',
-                type: 'bar'
-            },
-          ]}
+        <Plot
+          data={waterfallChartData}
           layout={{ 
               width: 1000, 
               height: 600, 
-              title: "Female EO Plot" 
+              title: "Female EO Plot" ,
             }}
-        /> */}
+        />
       </div>
     );
   }
