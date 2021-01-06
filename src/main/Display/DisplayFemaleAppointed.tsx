@@ -4,6 +4,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { filterCaseInsensitive } from "../filterCaseInsensitive";
 import Collapsible from 'react-collapsible';
+import {DisplayFemalePlot} from './DisplayFemalePlot'
 
 interface MyProps {
     femaleAppointed?;
@@ -70,6 +71,7 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
 
         return (
             <div>
+                <DisplayFemalePlot />
                 {femaleAppointed!=undefined&&
                 <div>
                 <Collapsible 
