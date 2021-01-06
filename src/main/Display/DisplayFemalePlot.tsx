@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import Plot from "react-plotly.js";
 import Select from "react-select";
+import { disconnect } from "process";
 
 interface MyProps {
   femaleAppointed?;
@@ -37,43 +38,96 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
     return options;
   }
   handleSelectIndex = (selectedOption) => {
-    let indexArr = [];
-    if (selectedOption != null) {
-      for (let i = 0; i < selectedOption.length; i++) {
-        indexArr.push(selectedOption[i].value);
-      }
-      this.setState({
-        selectedIndex: indexArr,
-      });
-    }
+    /* 
+        //for isMulti
+        let indexArr = [];
+        if (selectedOption != null) {
+        for (let i = 0; i < selectedOption.length; i++) {
+            indexArr.push(selectedOption[i].value);
+        }
+        this.setState({
+            selectedIndex: indexArr,
+        });
+        }
+
+    */
+   this.setState({
+        selectedIndex: selectedOption.value,
+    })
   };
-  
+  createDataBySelectedIndex=(data,selectedIndex)=>{
+    // let output=[]
+    /*
+    // for isMulti
+    for (let i=0;i<selectedIndex.length;i++){
+      output.push(data.filter(e=>e[6]==selectedIndex[i]))
+    }
+    */
+    return data.filter(e=>e[6]==selectedIndex)
+  }
+  countDataByDate = (dates, data)=>{
+      let output=[]
+      for (let i = 0; i < dates.length; i++){
+        output.push(data.filter(e=>e[0]==dates[i]).length)
+      }
+      return output
+  }
+  countNetChange = (appointed, dropped)=>{
+    let output=[]
+    for (let i = 0; i<appointed.length;i++){
+        output.push(appointed[i]-dropped[i])
+    }
+    return output
+  }
   render() {
+    let selectedFemaleAppointedDataByIndex = this.createDataBySelectedIndex(this.props.femaleAppointed,this.state.selectedIndex)
+    let selectedFemaleDroppedDataByIndex = this.createDataBySelectedIndex(this.props.femaleDroppedout,this.state.selectedIndex)
+    let datesInData = selectedFemaleAppointedDataByIndex.concat(selectedFemaleDroppedDataByIndex).map(e=>e[0]).filter(distinct).sort()
+    let countAppointed = this.countDataByDate(datesInData, selectedFemaleAppointedDataByIndex)
+    let countDropped = this.countDataByDate(datesInData,selectedFemaleDroppedDataByIndex)
+    let countNetChange = this.countNetChange(countAppointed, countDropped) 
     return (
       <div>
-        {console.log("this.state.selectedIndex", this.state.selectedIndex)}
+        
         <Select
           id="select-index"
           options={this.createOptionsIndex()}
           onChange={this.handleSelectIndex}
-          isMulti
+        //   isMulti
         />
         <Plot
           data={[
             {
-              x: [1, 2, 3],
-              y: [2, 6, 3],
+              x: datesInData,
+              y: countNetChange,
               type: "scatter",
-              mode: "lines+markers",
+              name:'Net Change',
               marker: { color: "red" },
             },
             {
               type: "bar",
-              x: [1, 2, 3],
-              y: [2, 5, 3],
+              name:'Appointed',
+              x: datesInData,
+              y: countAppointed,
+              marker: {
+                color: 'green'
+              }
+            },
+            {
+              type: "bar",
+              name:'Dropped',
+              x: datesInData,
+              y: countDropped,
+              marker: {
+                color: 'orange'
+              }
             },
           ]}
-          layout={{ width: 600, height: 600, title: "Female EO Plot" }}
+          layout={{ 
+              width: 1000, 
+              height: 600, 
+              title: "Female EO Plot" 
+            }}
         />
       </div>
     );
