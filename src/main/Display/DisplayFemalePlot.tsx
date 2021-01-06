@@ -15,6 +15,15 @@ const distinct = (value, index, self) => {
   return self.indexOf(value) === index;
 };
 
+function partsSums(ls){
+    let sum = ls[0]
+    let res  = [sum]
+    for (let i = 1; i <= ls.length; i++){
+        sum += ls[i]
+        res.push(sum)
+    }
+    return res
+}
 export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
   constructor(props) {
     super(props);
@@ -72,12 +81,16 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
       }
       return output
   }
+  
   countNetChange = (appointed, dropped)=>{
     let output=[]
     for (let i = 0; i<appointed.length;i++){
         output.push(appointed[i]-dropped[i])
     }
     return output
+  }
+  countAccumulated = (netchange)=>{
+    return partsSums(netchange)
   }
   render() {
     let selectedFemaleAppointedDataByIndex = this.createDataBySelectedIndex(this.props.femaleAppointed,this.state.selectedIndex)
@@ -86,6 +99,8 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
     let countAppointed = this.countDataByDate(datesInData, selectedFemaleAppointedDataByIndex)
     let countDropped = this.countDataByDate(datesInData,selectedFemaleDroppedDataByIndex)
     let countNetChange = this.countNetChange(countAppointed, countDropped) 
+    let countAccumulated = this.countAccumulated(countNetChange)
+    
     return (
       <div>
         
@@ -99,10 +114,10 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
           data={[
             {
               x: datesInData,
-              y: countNetChange,
+              y: countAccumulated,
               type: "scatter",
-              name:'Net Change',
-              marker: { color: "red" },
+              name:'Accumulated Change',
+              marker: { color: "grey" },
             },
             {
               type: "bar",
@@ -129,6 +144,28 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
               title: "Female EO Plot" 
             }}
         />
+        {/* <Plot
+          data={[
+            
+            {
+                x: ['giraffes', 'orangutans', 'monkeys'],
+                y: [12, 18, 29],
+                name: 'LA Zoo',
+                type: 'bar'
+            },
+            {
+                x: ['giraffes', 'orangutans', 'monkeys'],
+                y: [20, 14, 23],
+                name: 'SF Zoo',
+                type: 'bar'
+            },
+          ]}
+          layout={{ 
+              width: 1000, 
+              height: 600, 
+              title: "Female EO Plot" 
+            }}
+        /> */}
       </div>
     );
   }
