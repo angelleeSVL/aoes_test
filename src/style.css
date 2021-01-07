@@ -451,7 +451,10 @@ ul{
 .select-selected {
   background-color: rgb(200, 221, 243);
 }
-
+.select-index {
+  width:80%;
+  height: 0;
+}
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;

@@ -6,6 +6,14 @@ import { filterCaseInsensitive } from "../filterCaseInsensitive";
 import Collapsible from 'react-collapsible';
 import {DisplayFemalePlot} from './DisplayFemalePlot'
 
+function toTitleCase(str)  {
+    return str.replace(
+      /\w\S*/g,
+      function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
+    );
+  }
 interface MyProps {
     femaleAppointed?;
     femaleDroppedout
@@ -57,8 +65,8 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
             Date: data[i][0],
             Company: data[i][2],
             ISIN: data[i][3],
-            EO_Name: data[i][4],
-            EO_Title: data[i][5],
+            EO_Name: toTitleCase(data[i][4]),
+            EO_Title: toTitleCase(data[i][5]),
             Index: data[i][6],
             LEI:data[i][7],
           });
@@ -71,7 +79,12 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
 
         return (
             <div>
-                <DisplayFemalePlot />
+                <Collapsible
+                trigger={<p>Chart: Appointed / Dropped-out Female EO </p>}     
+                open={true}   
+                >
+                    <DisplayFemalePlot />
+                </Collapsible>
                 {femaleAppointed!=undefined&&
                 <div>
                 <Collapsible 

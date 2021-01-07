@@ -2,7 +2,6 @@ import * as React from "react";
 import { connect } from "react-redux";
 import Plot from "react-plotly.js";
 import Select from "react-select";
-import { disconnect } from "process";
 
 interface MyProps {
   femaleAppointed?;
@@ -24,6 +23,7 @@ function partsSums(ls){
     }
     return res
 }
+
 export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
   constructor(props) {
     super(props);
@@ -126,13 +126,13 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
         />
         <Plot
           data={[
-            {
-              x: datesInData,
-              y: countAccumulated,
-              type: "scatter",
-              name:'Accumulated Change',
-              marker: { color: "grey" },
-            },
+            // {
+            //   x: datesInData,
+            //   y: countAccumulated,
+            //   type: "scatter",
+            //   name:'Accumulated Change',
+            //   marker: { color: "grey" },
+            // },
             {
               type: "bar",
               name:'Appointed',
@@ -160,6 +160,20 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
                 color: 'blue'
               }
             },
+            {
+                x: datesInData,
+                y: countNetChange,
+                name: 'Net Change',
+                type: 'waterfall',
+                autosize: true,
+                showlegend: true,
+                connector: {
+                    line: {
+                        width: 0.5,
+                        color: "rgb(63, 63, 63)"
+                    }
+                  },
+            }
           ]}
           layout={{ 
               width: 1000, 
@@ -167,14 +181,14 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
               title: "Female EO Plot" 
             }}
         />
-        <Plot
+        {/* <Plot
           data={waterfallChartData}
           layout={{ 
               width: 1000, 
               height: 600, 
               title: "Female EO Plot" ,
             }}
-        />
+        /> */}
       </div>
     );
   }
