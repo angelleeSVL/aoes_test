@@ -81,11 +81,18 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
       }
       return output
   }
+  countDroppedDataByDate = (dates, data)=>{
+      let output=[]
+      for (let i = 0; i < dates.length; i++){
+        output.push((data.filter(e=>e[0]==dates[i]).length)*-1)
+      }
+      return output
+  }
   
   countNetChange = (appointed, dropped)=>{
     let output=[]
     for (let i = 0; i<appointed.length;i++){
-        output.push(appointed[i]-dropped[i])
+        output.push(appointed[i]+dropped[i])
     }
     return output
   }
@@ -97,7 +104,7 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
     let selectedFemaleDroppedDataByIndex = this.createDataBySelectedIndex(this.props.femaleDroppedout,this.state.selectedIndex)
     let datesInData = selectedFemaleAppointedDataByIndex.concat(selectedFemaleDroppedDataByIndex).map(e=>e[0]).filter(distinct).sort()
     let countAppointed = this.countDataByDate(datesInData, selectedFemaleAppointedDataByIndex)
-    let countDropped = this.countDataByDate(datesInData,selectedFemaleDroppedDataByIndex)
+    let countDropped = this.countDroppedDataByDate(datesInData,selectedFemaleDroppedDataByIndex)
     let countNetChange = this.countNetChange(countAppointed, countDropped) 
     let countAccumulated = this.countAccumulated(countNetChange)
     let waterfallChartData=[ 
@@ -151,15 +158,15 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
                 color: 'orange'
               }
             },
-            {
-              type: "bar",
-              name:'Net Change',
-              x: datesInData,
-              y: countNetChange,
-              marker: {
-                color: 'blue'
-              }
-            },
+            // {
+            //   type: "bar",
+            //   name:'Net Change',
+            //   x: datesInData,
+            //   y: countNetChange,
+            //   marker: {
+            //     color: 'blue'
+            //   }
+            // },
             {
                 x: datesInData,
                 y: countNetChange,
@@ -178,7 +185,7 @@ export class DisplayFemalePlotCl extends React.Component<MyProps, MyState> {
           layout={{ 
               width: 1000, 
               height: 600, 
-              title: "Female EO Plot" 
+            //   title: "Female EO Plot" 
             }}
         />
         {/* <Plot

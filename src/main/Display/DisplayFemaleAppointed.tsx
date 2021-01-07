@@ -66,7 +66,7 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
             Company: data[i][2],
             ISIN: data[i][3],
             EO_Name: toTitleCase(data[i][4]),
-            EO_Title: toTitleCase(data[i][5]),
+            EO_Title: (data[i][5]),
             Index: data[i][6],
             LEI:data[i][7],
           });
