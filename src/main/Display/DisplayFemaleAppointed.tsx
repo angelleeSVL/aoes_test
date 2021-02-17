@@ -5,6 +5,7 @@ import "react-table/react-table.css";
 import { filterCaseInsensitive } from "../filterCaseInsensitive";
 import Collapsible from 'react-collapsible';
 import {DisplayFemalePlot} from './DisplayFemalePlot'
+import {DisplayExecutives} from './DisplayExecutives'
 
 function toTitleCase(str)  {
     return str.replace(
@@ -79,6 +80,13 @@ export class DisplayFemaleAppointedCl extends React.Component <MyProps, MyState>
 
         return (
             <div>
+                <Collapsible
+                trigger={<p>Table: List of Executives </p>}     
+                open={true}   
+                >
+                    <DisplayExecutives />
+                </Collapsible>
+
                 <Collapsible
                 trigger={<p>Chart: Appointed / Dropped-out Female EO </p>}     
                 open={true}   

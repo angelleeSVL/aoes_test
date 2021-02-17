@@ -230,6 +230,7 @@ class HelloCl extends React.Component<HelloProps, MyState> {
           // fetchGetPostData("listRankInform", "LIST_SUM_STOCK_PER_OWNER",token,userid);
           // fetchGetPostData("listAuthRankSector", "LIST_RANK_SECTOR",token,userid);
           // fetchGetPostData("listAuthRankCountry", "LIST_RANK_COUNTRY",token,userid);
+          fetchGetPostData("execuSheCA100","EXECUSHE_CA100",token,userid)
           fetchGetPostData("femaleEOAppointed","FEMALE_APPOINTED",token,userid)
           fetchGetPostData("femaleDroppedout","FEMALE_DROPPEDOUT",token,userid)
           fetchGetPostData("viewRequest", "VIEW_REQUESTLIST",token,userid);

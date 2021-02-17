@@ -290,6 +290,11 @@ export const demoReducer = (
         ...state,
         femaleDroppedout: action.data,
       };
+    case "EXECUSHE_CA100":
+      return {
+        ...state,
+        execuSheCA100: action.data,
+      };
 
     default:
       return state;
